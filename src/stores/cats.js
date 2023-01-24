@@ -41,6 +41,9 @@ export const catsStore = defineStore({
               state.catsList = JSON.parse(data);
               localStorage.setItem("catsList", JSON.stringify(state.catsList));
             }
+            else {
+              state.catsList = JSON.parse(data);
+            }
           })
           .catch(error => console.log('error', error));
       }
