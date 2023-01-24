@@ -37,12 +37,9 @@ export const catsStore = defineStore({
             response.text()
           )
           .then(data => {
+            state.catsList = JSON.parse(data);
             if (state.catsList !== JSON.parse(localStorage.getItem("catsList"))) {
-              state.catsList = JSON.parse(data);
               localStorage.setItem("catsList", JSON.stringify(state.catsList));
-            }
-            else {
-              state.catsList = JSON.parse(data);
             }
           })
           .catch(error => console.log('error', error));
