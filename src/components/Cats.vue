@@ -1,5 +1,5 @@
 <script setup>
-import { catsStore } from "./cats"
+import { catsStore } from "../stores/cats"
 const store = catsStore();
 store.getCatsData(store);
 </script>
