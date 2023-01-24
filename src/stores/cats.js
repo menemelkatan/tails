@@ -31,6 +31,19 @@ export const catsStore = defineStore({
           })
           .catch(error => console.log('error', error));
       }
+      else {
+        fetch("https://cat-fact.herokuapp.com/facts", requestOptions)
+          .then(response =>
+            response.text()
+          )
+          .then(data => {
+            if (state.catsList !== JSON.parse(localStorage.getItem("catsList"))) {
+              state.catsList = JSON.parse(data);
+              localStorage.setItem("catsList", JSON.stringify(state.catsList));
+            }
+          })
+          .catch(error => console.log('error', error));
+      }
       },
   },
   persist: true,
